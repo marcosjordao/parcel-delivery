@@ -20,8 +20,6 @@ namespace ParcelDelivery.API.Controllers
         private readonly IParcelHandlerService _handlerService;
         private readonly IXmlParserService _xmlParserService;
 
-        //private readonly ICollection<Department> _departments;
-
         public HandlerController(IDepartmentService departmentService, IParcelHandlerService handlerService, IXmlParserService xmlParserService)
         {
             _departmentService = departmentService;
@@ -50,7 +48,7 @@ namespace ParcelDelivery.API.Controllers
 
         // POST: api/Handler/HandleContainerXml
         [HttpPost("HandleContainerXml/", Name = "HandleContainerXml")]
-        public ActionResult<List<(Parcel, Department)>> HandleContainerXml(IFormFile file)
+        public ActionResult<List<(Parcel parcel, Department department)>> HandleContainerXml(IFormFile file)
         {
             if (file == null || file.Length == 0)
                 return BadRequest("Invalid file");
@@ -70,7 +68,7 @@ namespace ParcelDelivery.API.Controllers
 
             // Handle all Parcels in the Container
             IEnumerable<Department> departments = _departmentService.GetAllDepartments();
-            var results = new List<(Parcel, Department)>();
+            var results = new List<(Parcel parcel, Department department)>();
 
             foreach (Parcel parcel in container.Parcels)
             {
