@@ -111,14 +111,6 @@ namespace ParcelDelivery.Tests.Services
             Assert.Null(department);
         }
 
-        private Parcel CreateFakeParcel(decimal weight, decimal value)
-        {
-            return new Parcel(sender: new Person("Name", new Address("Street", "1", "2", "City")),
-                              receipient: new Person("Name", new Address("Street", "1", "2", "City")),
-                              weight: weight,
-                              value: value);
-        }
-
         private Department CreateFakeDepartment(string name, decimal? weightMin = null, decimal? weightMax = null, decimal? valueMin = null, decimal? valueMax = null)
         {
             Department department = new Department(name);
@@ -131,5 +123,14 @@ namespace ParcelDelivery.Tests.Services
 
             return department;
         }
+
+        private Parcel CreateFakeParcel(decimal weight, decimal value)
+        {
+            return new Parcel(sender: new Person("Name"),
+                              receipient: new Person("Name"),
+                              weight: weight,
+                              value: value);
+        }
+
     }
 }

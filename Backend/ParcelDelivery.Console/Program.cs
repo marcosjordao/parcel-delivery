@@ -34,8 +34,8 @@ namespace ParcelDelivery.ConsoleApp
 
         private static Parcel CreateFakeParcel(decimal weight, decimal value)
         {
-            return new Parcel(sender: new Person("Name", new Address("Street", "1", "2", "City")),
-                              receipient: new Person("Name", new Address("Street", "1", "2", "City")),
+            return new Parcel(sender: new Person("Name"),
+                              receipient: new Person("Name"),
                               weight: weight,
                               value: value);
         }

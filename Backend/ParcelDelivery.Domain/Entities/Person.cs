@@ -7,13 +7,7 @@ namespace ParcelDelivery.Domain.Entities
 {
     public class Person
     {
-
-        private Person()
-        {
-
-        }
-
-        public Person(string name, Address address)
+        public Person(string name, Address address = null)
         {
             Name = name;
             Address = address;

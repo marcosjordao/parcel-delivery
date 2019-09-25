@@ -8,11 +8,6 @@ namespace ParcelDelivery.Domain.Entities
     public class Container
     {
 
-        private Container()
-        {
-
-        }
-
         public Container(int id, DateTime shippingDate)
         {
             Id = id;

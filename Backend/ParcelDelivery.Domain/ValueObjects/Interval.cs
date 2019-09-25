@@ -6,12 +6,7 @@ namespace ParcelDelivery.Domain.ValueObjects
 {
     public class Interval
     {
-        public Interval()
-        {
-
-        }
-
-        public Interval(decimal? min, decimal? max)
+        public Interval(decimal? min = null, decimal? max = null)
         {
             Min = min;
             Max = max;

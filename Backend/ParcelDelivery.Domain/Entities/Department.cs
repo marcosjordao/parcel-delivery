@@ -16,18 +16,5 @@ namespace ParcelDelivery.Domain.Entities
         public Interval WeightCriteria { get; set; }
         public Interval ValueCriteria { get; set; }
 
-        public override bool Equals(object obj)
-        {
-            if (obj == null || GetType() != obj.GetType())
-                return false;
-
-            return Name.Equals(((Department) obj).Name);
-        }
-
-        // override object.GetHashCode
-        public override int GetHashCode()
-        {
-            return Name.GetHashCode();
-        }
     }
 }

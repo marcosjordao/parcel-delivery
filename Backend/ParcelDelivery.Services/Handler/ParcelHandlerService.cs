@@ -1,4 +1,5 @@
 ﻿using ParcelDelivery.Domain.Entities;
+using ParcelDelivery.Domain.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,7 +7,7 @@ using System.Text;
 
 namespace ParcelDelivery.Services.Handler
 {
-    public class ParcelHandlerService
+    public class ParcelHandlerService: IParcelHandlerService
     {
 
         public Department HandleParcelToDepartment(ICollection<Department> departments, Parcel parcel)
