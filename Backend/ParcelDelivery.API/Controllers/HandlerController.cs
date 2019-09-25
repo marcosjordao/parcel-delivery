@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ParcelDelivery.Domain.Entities;
@@ -14,30 +16,31 @@ namespace ParcelDelivery.API.Controllers
     [ApiController]
     public class HandlerController : ControllerBase
     {
+        private readonly IDepartmentService _departmentService;
         private readonly IParcelHandlerService _handlerService;
-        private readonly ICollection<Department> _departments;
+        private readonly IXmlParserService _xmlParserService;
 
-        public HandlerController(IParcelHandlerService handlerService)
+        //private readonly ICollection<Department> _departments;
+
+        public HandlerController(IDepartmentService departmentService, IParcelHandlerService handlerService, IXmlParserService xmlParserService)
         {
+            _departmentService = departmentService;
             _handlerService = handlerService;
-
-            // Setup fake departments
-            _departments = new List<Department>();
-            _departments.Add(CreateFakeDepartment(name: "Mail", weightMax: 1));
-            _departments.Add(CreateFakeDepartment(name: "Regular", weightMin: 1, weightMax: 10));
-            _departments.Add(CreateFakeDepartment(name: "Heavy", weightMin: 10));
-            _departments.Add(CreateFakeDepartment(name: "Insurance", valueMin: 1000));
+            _xmlParserService = xmlParserService;
         }
 
 
-        // GET: api/Handle
+        // GET: api/Handler
         [HttpGet]
-        public ActionResult GetDepartmentToHandle([FromBody] Parcel parcel)
+        public ActionResult<Department> HandleParcelToDepartment([FromBody] Parcel parcel)
         {
             if (parcel == null)
                 return BadRequest();
 
-            Department department = _handlerService.HandleParcelToDepartment(_departments, parcel);
+            IEnumerable<Department> departments = _departmentService.GetAllDepartments();
+
+            Department department = _handlerService.HandleParcelToDepartment(departments,
+                                                                             parcel);
 
             if (department == null)
                 return NotFound();
@@ -45,19 +48,39 @@ namespace ParcelDelivery.API.Controllers
             return Ok(department);
         }
 
-
-        private Department CreateFakeDepartment(string name, decimal? weightMin = null, decimal? weightMax = null, decimal? valueMin = null, decimal? valueMax = null)
+        // POST: api/Handler/HandleContainerXml
+        [HttpPost("HandleContainerXml/", Name = "HandleContainerXml")]
+        public ActionResult<List<(Parcel, Department)>> HandleContainerXml(IFormFile file)
         {
-            Department department = new Department(name);
+            if (file == null || file.Length == 0)
+                return BadRequest("Invalid file");
 
-            if (weightMin.HasValue || weightMax.HasValue)
-                department.WeightCriteria = new Interval(weightMin, weightMax);
+            // Accepts XML file
+            if (file.ContentType != "text/xml")
+                return BadRequest("Invalid file type");
 
-            if (valueMin.HasValue || valueMax.HasValue)
-                department.ValueCriteria = new Interval(valueMin, valueMax);
+            // Read the XML file
+            XDocument xmlDocument = XDocument.Load(file.OpenReadStream());
 
-            return department;
+            // Parse the XML to a Container
+            Container container = _xmlParserService.ParseXml(xmlDocument);
+
+            if (container == null)
+                return BadRequest("Invalid file content");
+
+            // Handle all Parcels in the Container
+            IEnumerable<Department> departments = _departmentService.GetAllDepartments();
+            var results = new List<(Parcel, Department)>();
+
+            foreach (Parcel parcel in container.Parcels)
+            {
+                Department department = _handlerService.HandleParcelToDepartment(departments,
+                                                                                 parcel);
+
+                results.Add((parcel, department));
+            }
+
+            return Ok(results);
         }
-
     }
 }

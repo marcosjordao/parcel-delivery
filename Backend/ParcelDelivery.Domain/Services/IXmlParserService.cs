@@ -2,11 +2,12 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Xml.Linq;
 
 namespace ParcelDelivery.Domain.Services
 {
-    public interface IParcelHandlerService
+    public interface IXmlParserService
     {
-        Department HandleParcelToDepartment(IEnumerable<Department> departments, Parcel parcel);
+        Container ParseXml(XDocument document);
     }
 }

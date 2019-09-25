@@ -11,7 +11,7 @@ using Newtonsoft.Json;
 
 namespace ParcelDelivery.Tests.Services
 {
-    public class DeliveryXmlParserTest
+    public class XmlParserTest
     {
 
         [Fact]
@@ -49,7 +49,7 @@ namespace ParcelDelivery.Tests.Services
             var xmlDocument = XDocument.Parse(textXml);
 
             // Use the service to Parse the XML to a Container object
-            var parserService = new DeliveryXmlParserService();
+            var parserService = new XmlParserService();
             var parsedContainer = parserService.ParseXml(xmlDocument);
 
             // Create a fake expected Container to compare

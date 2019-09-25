@@ -1,11 +1,12 @@
-﻿using ParcelDelivery.Domain.ValueObjects;
+﻿using ParcelDelivery.Domain.Entities.Base;
+using ParcelDelivery.Domain.ValueObjects;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace ParcelDelivery.Domain.Entities
 {
-    public class Department
+    public class Department: Entity
     {
         public Department(string name)
         {

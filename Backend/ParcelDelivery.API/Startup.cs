@@ -10,8 +10,12 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using ParcelDelivery.Domain.Repositories;
 using ParcelDelivery.Domain.Services;
+using ParcelDelivery.Infrastructure.Repositories;
+using ParcelDelivery.Services.Entities;
 using ParcelDelivery.Services.Handler;
+using ParcelDelivery.Services.XmlParser;
 using Swashbuckle.AspNetCore.Swagger;
 
 namespace ParcelDelivery.API
@@ -34,8 +38,11 @@ namespace ParcelDelivery.API
                                  options.SerializerSettings.NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore;
                              });
 
-            // DI
+            // Dependency Injection
             services.AddScoped<IParcelHandlerService, ParcelHandlerService>();
+            services.AddScoped<IXmlParserService, XmlParserService>();
+            services.AddScoped<IDepartmentService, DepartmentService>();
+            services.AddScoped<IDepartmentRepository, DepartmentRepository>();
 
 
             // Swagger

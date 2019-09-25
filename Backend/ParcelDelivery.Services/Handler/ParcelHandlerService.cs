@@ -10,7 +10,7 @@ namespace ParcelDelivery.Services.Handler
     public class ParcelHandlerService: IParcelHandlerService
     {
 
-        public Department HandleParcelToDepartment(ICollection<Department> departments, Parcel parcel)
+        public Department HandleParcelToDepartment(IEnumerable<Department> departments, Parcel parcel)
         {
             // 1) Filter by Value and Weight
             var filteredByValueAndWeight = departments.Where(f => f.ValueCriteria != null &&

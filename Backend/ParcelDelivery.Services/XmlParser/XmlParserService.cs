@@ -1,4 +1,5 @@
 ﻿using ParcelDelivery.Domain.Entities;
+using ParcelDelivery.Domain.Services;
 using ParcelDelivery.Domain.ValueObjects;
 using System;
 using System.Collections.Generic;
@@ -10,7 +11,7 @@ using System.Xml.Serialization;
 
 namespace ParcelDelivery.Services.XmlParser
 {
-    public class DeliveryXmlParserService
+    public class XmlParserService : IXmlParserService
     {
         public Container ParseXml(XDocument document)
         {

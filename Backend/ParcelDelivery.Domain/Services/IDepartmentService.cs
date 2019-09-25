@@ -5,8 +5,8 @@ using System.Text;
 
 namespace ParcelDelivery.Domain.Services
 {
-    public interface IParcelHandlerService
+    public interface IDepartmentService
     {
-        Department HandleParcelToDepartment(IEnumerable<Department> departments, Parcel parcel);
+        IEnumerable<Department> GetAllDepartments();
     }
 }
