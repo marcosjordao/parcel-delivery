@@ -3,15 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29306.81
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParcelDelivery.API", "ParcelDelivery.API\ParcelDelivery.API.csproj", "{DC43CD40-5DA8-41CB-A622-1D9398980A1D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ParcelDelivery.API", "ParcelDelivery.API\ParcelDelivery.API.csproj", "{DC43CD40-5DA8-41CB-A622-1D9398980A1D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParcelDelivery.Domain", "ParcelDelivery.Domain\ParcelDelivery.Domain.csproj", "{05AECE91-58B5-4282-BF16-8458EEE6F772}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ParcelDelivery.Domain", "ParcelDelivery.Domain\ParcelDelivery.Domain.csproj", "{05AECE91-58B5-4282-BF16-8458EEE6F772}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParcelDelivery.Services", "ParcelDelivery.Services\ParcelDelivery.Services.csproj", "{019E146A-2C72-4311-937D-50F8B1DA202F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ParcelDelivery.Services", "ParcelDelivery.Services\ParcelDelivery.Services.csproj", "{019E146A-2C72-4311-937D-50F8B1DA202F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParcelDelivery.Infrastructure", "ParcelDelivery.Infrastructure\ParcelDelivery.Infrastructure.csproj", "{A684BD4D-76E6-449E-9FC8-C0B61FB49912}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ParcelDelivery.Infrastructure", "ParcelDelivery.Infrastructure\ParcelDelivery.Infrastructure.csproj", "{A684BD4D-76E6-449E-9FC8-C0B61FB49912}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParcelDelivery.Tests", "ParcelDelivery.Tests\ParcelDelivery.Tests.csproj", "{ED74616C-331E-46A4-B744-37317BBF034A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ParcelDelivery.Tests", "ParcelDelivery.Tests\ParcelDelivery.Tests.csproj", "{ED74616C-331E-46A4-B744-37317BBF034A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParcelDelivery.Console", "ParcelDelivery.Console\ParcelDelivery.Console.csproj", "{3BDC307A-F9E9-41B3-BF54-58A3C893569C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{ED74616C-331E-46A4-B744-37317BBF034A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ED74616C-331E-46A4-B744-37317BBF034A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ED74616C-331E-46A4-B744-37317BBF034A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3BDC307A-F9E9-41B3-BF54-58A3C893569C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3BDC307A-F9E9-41B3-BF54-58A3C893569C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3BDC307A-F9E9-41B3-BF54-58A3C893569C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3BDC307A-F9E9-41B3-BF54-58A3C893569C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

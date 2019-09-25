@@ -6,6 +6,12 @@ namespace ParcelDelivery.Domain.ValueObjects
 {
     public class Address
     {
+
+        private Address()
+        {
+
+        }
+
         public Address(string street, string houseNumber, string postalCode, string city)
         {
             Street = street;

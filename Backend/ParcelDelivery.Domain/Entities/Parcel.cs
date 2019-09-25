@@ -6,6 +6,10 @@ namespace ParcelDelivery.Domain.Entities
 {
     public class Parcel
     {
+        private Parcel()
+        {
+
+        }
         public Parcel(Person sender, Person receipient, decimal weight, decimal value)
         {
             Sender = sender;
