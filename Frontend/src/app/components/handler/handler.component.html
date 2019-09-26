@@ -1,1 +1,70 @@
-<p>handler works!</p>
+<h2>
+    <span class='fa fa-angle-right fa-xs'></span>
+    Handle Parcel to a Department
+</h2>
+<form #handlerForm="ngForm">
+    <!-- Parcel -->
+    <div class="row">
+        <div class="col-md-12 col-lg-7">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Parcel</h5>
+
+                    <!-- Sender -->
+                    <div class="form-group row">
+                        <label for="sender-name" class="col-sm-2 col-form-label">Sender:</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" [(ngModel)]="parcel.sender.name" id="sender-name"
+                                name="sender-name" required minlength="2" maxlength="100" placeholder="Sender name" />
+                        </div>
+                    </div>
+
+                    <!-- Receipient -->
+                    <div class="form-group row">
+                        <label for="receipient-name" class="col-sm-2 col-form-label">Receipient:</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" [(ngModel)]="parcel.receipient.name" id="receipient-name"
+                                name="receipient-name" required minlength="2" maxlength="100"
+                                placeholder="Receipient name" />
+                        </div>
+                    </div>
+
+                    <!-- Weight -->
+                    <div class="form-group row">
+                        <label for="weight" class="col-sm-2 col-form-label">Weight:</label>
+                        <div class="col-sm-3">
+                            <input class="form-control" [(ngModel)]="parcel.weight" id="weight" name="weight" required
+                                minlength="2" maxlength="100" />
+                        </div>
+                    </div>
+
+                    <!-- Value -->
+                    <div class="form-group row">
+                        <label for="value" class="col-sm-2 col-form-label">Value:</label>
+                        <div class="col-sm-3">
+                            <input class="form-control" [(ngModel)]="parcel.value" id="value" name="value" required
+                                minlength="2" maxlength="100" />
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" (click)="handleParcel()">Handle
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <!-- Department -->
+    <div class="row" *ngIf="department">
+        <div class="col-md-12 col-lg-7">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Department</h5>
+                    <p>{{department.name}}</p>
+                    <p *ngIf="department.weightCriteria">{{ intervalAsString(department.weightCriteria) }} (kg)</p>
+                    <p *ngIf="department.valueCriteria">{{ intervalAsString(department.valueCriteria) }} (€)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
