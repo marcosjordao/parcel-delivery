@@ -1,0 +1,23 @@
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+    <a class="navbar-brand" [routerLink]='["/"]'>
+        <img src="../../assets/icon.png" width="30" height="30" class="d-inline-block align-top" alt="">
+        Parcel Delivery
+    </a>
+
+    <button class="navbar-toggler" type="button" (click)="toggle()">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+
+    <div class="collapse navbar-collapse" [ngClass]="{ 'show': isExpanded }">
+        <ul class="navbar-nav mr-auto">
+
+            <li [routerLinkActive]='["active"]'>
+                <a class="nav-link" [routerLink]='["/handler"]' (click)='collapse()'>
+                    <span class='fa fa-cart-arrow-down'></span> Handler
+                </a>
+            </li>
+        </ul>
+
+    </div>
+</nav>

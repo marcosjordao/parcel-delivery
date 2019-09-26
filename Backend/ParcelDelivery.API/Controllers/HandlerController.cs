@@ -28,8 +28,8 @@ namespace ParcelDelivery.API.Controllers
         }
 
 
-        // GET: api/Handler
-        [HttpGet]
+        // POST: api/Handler
+        [HttpPost]
         public ActionResult<Department> HandleParcelToDepartment([FromBody] Parcel parcel)
         {
             if (parcel == null)
