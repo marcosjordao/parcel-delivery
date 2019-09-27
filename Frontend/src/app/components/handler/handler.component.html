@@ -47,7 +47,9 @@
                         </div>
                     </div>
 
-                    <button type="submit" class="btn btn-primary" (click)="handleParcel()">Handle
+                    <button type="submit" class="btn btn-primary" (click)="handleParcel()">
+                        <span *ngIf="!loading">Handle</span>
+                        <span *ngIf="loading" class="fas fa-spinner fa-spin"></span>
                     </button>
                 </div>
             </div>
@@ -60,9 +62,10 @@
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">Department</h5>
-                    <p>{{department.name}}</p>
-                    <p *ngIf="department.weightCriteria">{{ intervalAsString(department.weightCriteria) }} (kg)</p>
-                    <p *ngIf="department.valueCriteria">{{ intervalAsString(department.valueCriteria) }} (€)</p>
+                    <p><strong>Name: {{department.name}}</strong></p>
+                    <p *ngIf="department.weightCriteria">Weight Criteria (kg): {{ getInterval(department.weightCriteria) }}</p>
+                    <p *ngIf="department.valueCriteria">Value Criteria (€): {{ getInterval(department.valueCriteria) }}
+                    </p>
                 </div>
             </div>
         </div>

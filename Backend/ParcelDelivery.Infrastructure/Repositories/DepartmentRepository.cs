@@ -9,19 +9,19 @@ using System.Text;
 
 namespace ParcelDelivery.Infrastructure.Repositories
 {
-    public class DepartmentRepository : BaseRepository<Department>, IDepartmentRepository
+    public class DepartmentRepository : MongoRepository<Department>, IDepartmentRepository
     {
 
         public DepartmentRepository() : base()
         {
-            // Setup fake departments
-            _collection = new List<Department>
-            {
-                CreateFakeDepartment(name: "Mail", weightMax: 1),
-                CreateFakeDepartment(name: "Regular", weightMin: 1, weightMax: 10),
-                CreateFakeDepartment(name: "Heavy", weightMin: 10),
-                CreateFakeDepartment(name: "Insurance", valueMin: 1000)
-            };
+            //// Setup fake departments
+            //_collection = new List<Department>
+            //{
+            //    CreateFakeDepartment(name: "Mail", weightMax: 1),
+            //    CreateFakeDepartment(name: "Regular", weightMin: 1, weightMax: 10),
+            //    CreateFakeDepartment(name: "Heavy", weightMin: 10),
+            //    CreateFakeDepartment(name: "Insurance", valueMin: 1000)
+            //};
 
         }
 

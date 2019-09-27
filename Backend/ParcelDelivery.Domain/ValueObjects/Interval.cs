@@ -15,12 +15,18 @@ namespace ParcelDelivery.Domain.ValueObjects
         public decimal? Min { get; set; }
         public decimal? Max { get; set; }
 
+        public bool IsEmpty()
+        {
+            return (Min == null && Max == null);
+        }
         public bool IsInInterval(decimal value)
         {
-            var min = Min ?? decimal.MinValue;
-            var max = Max ?? decimal.MaxValue;
-
-            return (value > min && value <= max);
+            if (Min != null & Max != null)
+                return (value > Min && value <= Max);
+            else if (Min != null)
+                return value > Min;
+            else
+                return value <= Max;
         }
     }
 }
