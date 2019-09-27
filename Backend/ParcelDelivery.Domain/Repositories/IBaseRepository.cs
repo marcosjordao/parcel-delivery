@@ -8,15 +8,19 @@ namespace ParcelDelivery.Domain.Repositories
 {
     public interface IBaseRepository<TEntity> where TEntity : Entity
     {
-        TEntity Get(int id);
+        TEntity Get(string id);
+        Task<TEntity> GetAsync(string id);
 
         IEnumerable<TEntity> GetAll();
+        Task<IEnumerable<TEntity>> GetAllAsync();
 
         void Add(TEntity entity);
+        Task AddAsync(TEntity entity);
 
         void Update(TEntity entity);
+        Task UpdateAsync(TEntity entity);
 
         void Delete(TEntity entity);
-
+        Task DeleteAsync(TEntity entity);
     }
 }
