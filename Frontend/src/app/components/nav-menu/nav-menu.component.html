@@ -11,10 +11,17 @@
 
     <div class="collapse navbar-collapse" [ngClass]="{ 'show': isExpanded }">
         <ul class="navbar-nav mr-auto">
+            <!-- Department -->
+            <li [routerLinkActive]='["active"]'>
+                <a class="nav-link" [routerLink]='["/department"]' (click)='collapse()'>
+                    <span class='fa fa-archway'></span> Departments
+                </a>
+            </li>
 
+            <!-- Handler -->
             <li [routerLinkActive]='["active"]'>
                 <a class="nav-link" [routerLink]='["/handler"]' (click)='collapse()'>
-                    <span class='fa fa-cart-arrow-down'></span> Handler
+                    <span class='fa fa-random'></span> Handler
                 </a>
             </li>
         </ul>

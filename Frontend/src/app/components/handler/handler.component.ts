@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Parcel } from 'src/app/model/parcel';
-import { Person } from 'src/app/model/person';
 import { HandlerService } from 'src/app/services/handler.service';
 import { Department } from 'src/app/model/department';
-import { Interval } from 'src/app/model/value-objects/interval';
+import {
+    Interval,
+    intervalAsString
+} from 'src/app/model/value-objects/interval';
+import { MessageService } from 'src/app/services/message.service';
 
 @Component({
     selector: 'app-handler',
@@ -13,33 +16,32 @@ import { Interval } from 'src/app/model/value-objects/interval';
 export class HandlerComponent implements OnInit {
     public parcel: Parcel;
     department: Department;
+    loading = false;
 
-    constructor(private handlerService: HandlerService) {
+    constructor(
+        private handlerService: HandlerService,
+        private messageService: MessageService
+    ) {
         this.parcel = new Parcel();
     }
 
     ngOnInit() {}
 
     handleParcel() {
+        this.loading = true;
         this.handlerService.handleParcel(this.parcel).subscribe(
             (department: Department) => {
                 this.department = department;
+                this.loading = false;
             },
             error => {
-                alert(error);
+                this.messageService.showError(error);
+                this.loading = false;
             }
         );
     }
 
-    intervalAsString(interval: Interval) {
-        if (interval.min && interval.max) {
-            return `${interval.min} to ${interval.max}`;
-        } else if (interval.min) {
-            return `from ${interval.min}`;
-        } else if (interval.max) {
-            return `up to ${interval.max}`;
-        } else {
-            return '';
-        }
+    getInterval(interval: Interval) {
+        return intervalAsString(interval);
     }
 }

@@ -1,0 +1,36 @@
+<h2>
+    <span class='fa fa-angle-right fa-xs'></span>
+    Departments
+    <i *ngIf="!departments" class="fas fa-spin fa-spinner"></i>
+    &nbsp;
+    <a *ngIf="departments" routerLink="/department/new" class="btn btn-info btn-sm">
+        <i class="fas fa-plus fa-xs"></i>
+        Add new
+    </a>
+</h2>
+
+<table class='table table-hover' *ngIf="departments">
+    <thead class="thead-gray">
+        <tr>
+            <th>Name</th>
+            <th>Weight Criteria</th>
+            <th>Value Criteria</th>
+            <th>&nbsp;</th>
+        </tr>
+    </thead>
+    <tbody class="table-striped">
+        <tr *ngFor="let department of departments">
+            <td>{{ department.name }}</td>
+            <td>{{ getInterval(department.weightCriteria) }}</td>
+            <td>{{ getInterval(department.valueCriteria) }}</td>
+            <td>
+                <a routerLink="/department/{{department.id}}" class="btn btn-info btn-sm w-5rem">modify</a>
+                &nbsp;
+                <button class="btn btn-danger btn-sm w-5rem" title="excluir" (click)="delete(department)"
+                    [disabled]="deleting === department">
+                    <span *ngIf="deleting !== department">delete</span>
+                    <span *ngIf="deleting === department" class="fas fa-spinner fa-spin"></span>
+                </button> </td>
+        </tr>
+    </tbody>
+</table>

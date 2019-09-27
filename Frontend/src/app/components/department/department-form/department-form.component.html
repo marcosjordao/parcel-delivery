@@ -1,0 +1,55 @@
+<h2>
+    <span class='fa fa-angle-right fa-xs'></span>
+    Departments
+    <i *ngIf="!department" class="fas fa-spin fa-spinner"></i>
+</h2>
+
+<div *ngIf="department">
+    <form #departmentForm="ngForm">
+
+        <!-- Name -->
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input class="form-control" [(ngModel)]="department.name" id="name" name="name" required minlength="3"
+                maxlength="100" />
+        </div>
+
+        <!-- Weight Criteria -->
+        <label>Weight Criteria:</label>
+        <div class="form-group form-row">
+            <div class="col">
+                <label for="weight-min">Min:</label>
+                <input class="form-control" [(ngModel)]="department?.weightCriteria.min" id="weight-min" name="weight-min"
+                    maxlength="10" />
+            </div>
+            <div class="col">
+                <label for="weight-max">Max:</label>
+                <input class="form-control" [(ngModel)]="department?.weightCriteria.max" id="weight-max" name="weight-max"
+                    maxlength="10" />
+            </div>
+        </div>
+
+        <!-- Value Criteria -->
+        <label>Value Criteria:</label>
+        <div class="form-group form-row">
+            <div class="col">
+                <label for="value-min">Min:</label>
+                <input class="form-control" [(ngModel)]="department?.valueCriteria.min" id="value-min" name="value-min"
+                    maxlength="10" />
+            </div>
+            <div class="col">
+                <label for="value-max">Max:</label>
+                <input class="form-control" [(ngModel)]="department?.valueCriteria.max" id="value-max" name="value-max"
+                    maxlength="10" />
+            </div>
+        </div>
+
+        <button type="submit" [disabled]="!departmentForm.form.valid || saving" class="btn btn-primary w-5rem"
+            (click)="save()">
+            <span *ngIf="!saving">Save</span>
+            <span *ngIf="saving" class="fas fa-spinner fa-spin"></span>
+        </button>
+        &nbsp;
+        <button class="btn btn-light" (click)="goBack()">Cancel</button>
+    </form>
+</div>
