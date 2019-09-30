@@ -48,6 +48,16 @@ namespace ParcelDelivery.Services.Entities
             await _repository.AddAsync(department);
         }
 
+        public void UpdateDepartment(Department department)
+        {
+            _repository.Update(department);
+        }
+
+        public async Task UpdateDepartmentAsync(Department department)
+        {
+            await _repository.UpdateAsync(department);
+        }
+
         public void DeleteDepartment(Department department)
         {
             _repository.Delete(department);
@@ -58,14 +68,5 @@ namespace ParcelDelivery.Services.Entities
             await _repository.DeleteAsync(department);
         }
 
-        public void UpdateDepartment(Department department)
-        {
-            _repository.Update(department);
-        }
-
-        public async Task UpdateDepartmentAsync(Department department)
-        {
-            await _repository.UpdateAsync(department);
-        }
     }
 }

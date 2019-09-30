@@ -6,8 +6,11 @@ https://parceldeliveryapi.azurewebsites.net/swagger
 
 ### Coded with:
  * **[.NET Core (v 2.2)](https://dotnet.microsoft.com)**
- * [xUnit](https://xunit.github.io/)
+ * [MongoDb](http://mongodb.com)
  * [Swashbuckle Swagger](https://swagger.io/)
+ * [xUnit](https://xunit.github.io/)
+ * [Moq (v4.13)](https://github.com/moq/moq4)
+ 
  
 ### How to run
 ```
