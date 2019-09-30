@@ -15,5 +15,7 @@ namespace ParcelDelivery.Domain.Entities
 
         public string Name { get; private set; }
         public Address Address { get; private set; }
+
+        
     }
 }

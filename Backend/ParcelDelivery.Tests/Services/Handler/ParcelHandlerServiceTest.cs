@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Text;
 using Xunit;
 
-namespace ParcelDelivery.Tests.Services
+namespace ParcelDelivery.Tests.Services.Handler
 {
     public class ParcelHandlerServiceTest
     {

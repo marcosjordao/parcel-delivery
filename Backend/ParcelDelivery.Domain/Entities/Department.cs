@@ -8,6 +8,8 @@ namespace ParcelDelivery.Domain.Entities
 {
     public class Department: Entity
     {
+        protected Department() { }
+
         public Department(string name)
         {
             Name = name;
