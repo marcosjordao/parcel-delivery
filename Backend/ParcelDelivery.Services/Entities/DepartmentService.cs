@@ -1,6 +1,8 @@
-﻿using ParcelDelivery.Domain.Entities;
+﻿using FluentValidation;
+using ParcelDelivery.Domain.Entities;
 using ParcelDelivery.Domain.Repositories;
 using ParcelDelivery.Domain.Services;
+using ParcelDelivery.Services.Validators;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -40,21 +42,33 @@ namespace ParcelDelivery.Services.Entities
 
         public void AddDepartment(Department department)
         {
+            DepartmentValidator validator = new DepartmentValidator();
+            validator.ValidateAndThrow(department);
+
             _repository.Add(department);
         }
 
         public async Task AddDepartmentAsync(Department department)
         {
+            DepartmentValidator validator = new DepartmentValidator();
+            await validator.ValidateAndThrowAsync(department);
+
             await _repository.AddAsync(department);
         }
 
         public void UpdateDepartment(Department department)
         {
+            DepartmentValidator validator = new DepartmentValidator();
+            validator.ValidateAndThrow(department);
+
             _repository.Update(department);
         }
 
         public async Task UpdateDepartmentAsync(Department department)
         {
+            DepartmentValidator validator = new DepartmentValidator();
+            await validator.ValidateAndThrowAsync(department);
+
             await _repository.UpdateAsync(department);
         }
 

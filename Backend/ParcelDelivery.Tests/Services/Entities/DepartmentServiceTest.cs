@@ -1,4 +1,5 @@
-﻿using Moq;
+﻿using FluentValidation;
+using Moq;
 using ParcelDelivery.Domain.Entities;
 using ParcelDelivery.Domain.Repositories;
 using ParcelDelivery.Services.Entities;
@@ -82,39 +83,76 @@ namespace ParcelDelivery.Tests.Services.Entities
         }
 
         [Fact]
-        private void AddDepartment_ShouldInvokeRepository()
+        private void AddDepartment_WithValidDepartment_ShouldInvokeRepository()
         {
+            Department valid = new Department("Name");
+            _service.AddDepartment(valid);
 
-            _service.AddDepartment(_departmentMock.Object);
-
-            _repositoryMock.Verify(x => x.Add(_departmentMock.Object), Times.Once);
+            _repositoryMock.Verify(x => x.Add(valid), Times.Once);
         }
 
         [Fact]
-        private async Task AddDepartment_ShouldInvokeRepository_Async()
+        private async Task AddDepartment_WithValidDepartment_ShouldInvokeRepository_Async()
         {
+            Department valid = new Department("Name");
+            await _service.AddDepartmentAsync(valid);
 
-            await _service.AddDepartmentAsync(_departmentMock.Object);
-
-            _repositoryMock.Verify(x => x.AddAsync(_departmentMock.Object), Times.Once);
-        }
-        
-        [Fact]
-        private void UpdateDepartment_ShouldInvokeRepository()
-        {
-
-            _service.UpdateDepartment(_departmentMock.Object);
-
-            _repositoryMock.Verify(x => x.Update(_departmentMock.Object), Times.Once);
+            _repositoryMock.Verify(x => x.AddAsync(valid), Times.Once);
         }
 
         [Fact]
-        private async Task UpdateDepartment_ShouldInvokeRepository_Async()
+        private void AddDepartment_WithInvalidDepartment_ShouldThrowsException_AndNotInvokeRepository()
         {
+            Department invalid = new Department(null);
+            Assert.Throws<ValidationException>(() => _service.AddDepartment(invalid));
 
-            await _service.UpdateDepartmentAsync(_departmentMock.Object);
+            _repositoryMock.Verify(x => x.Add(invalid), Times.Never);
+        }
 
-            _repositoryMock.Verify(x => x.UpdateAsync(_departmentMock.Object), Times.Once);
+        [Fact]
+        private async Task AddDepartment_WithInvalidDepartment_ShouldThrowsException_AndNotInvokeRepository_Async()
+        {
+            Department invalid = new Department(null);
+
+            await Assert.ThrowsAsync<ValidationException>(() => _service.AddDepartmentAsync(invalid));
+
+            _repositoryMock.Verify(x => x.AddAsync(invalid), Times.Never);
+        }
+
+        [Fact]
+        private void UpdateDepartment_WithValidDepartment_ShouldInvokeRepository()
+        {
+            Department valid = new Department("Name");
+            _service.UpdateDepartment(valid);
+
+            _repositoryMock.Verify(x => x.Update(valid), Times.Once);
+        }
+
+        [Fact]
+        private async Task UpdateDepartment_WithValidDepartment_ShouldInvokeRepository_Async()
+        {
+            Department valid = new Department("Name");
+            await _service.UpdateDepartmentAsync(valid);
+
+            _repositoryMock.Verify(x => x.UpdateAsync(valid), Times.Once);
+        }
+
+        [Fact]
+        private void UpdateDepartment_WithInvalidDepartment_ShouldThrowsException_AndNotInvokeRepository()
+        {
+            Department invalid = new Department(null);
+            Assert.Throws<ValidationException>(() => _service.UpdateDepartment(invalid));
+
+            _repositoryMock.Verify(x => x.Update(invalid), Times.Never);
+        }
+
+        [Fact]
+        private async Task UpdateDepartment_WithInvalidDepartment_ShouldThrowsException_AndNotInvokeRepository_Async()
+        {
+            Department invalid = new Department(null);
+            await Assert.ThrowsAsync<ValidationException>(() => _service.UpdateDepartmentAsync(invalid));
+
+            _repositoryMock.Verify(x => x.UpdateAsync(invalid), Times.Never);
         }
 
         [Fact]

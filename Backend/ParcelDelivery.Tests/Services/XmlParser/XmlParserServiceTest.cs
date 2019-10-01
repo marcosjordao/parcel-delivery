@@ -15,7 +15,7 @@ namespace ParcelDelivery.Tests.Services.XmlParser
     {
 
         [Fact]
-        public void Should_Parse_Xml_To_Container()
+        public void ParseXml_ShouldParseXml_AndReturnContainer()
         {
             // Create a fake XML to parse
             var textXml = @"<Container>

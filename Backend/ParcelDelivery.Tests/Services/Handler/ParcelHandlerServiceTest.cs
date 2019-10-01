@@ -33,7 +33,7 @@ namespace ParcelDelivery.Tests.Services.Handler
         }
 
         [Fact]
-        public void Should_Handle_Based_Only_On_Max_Weight()
+        public void ShouldHandle_BasedOnlyOnMaxWeight()
         {
             var parcelToHandle = CreateFakeParcel(weight: 0.02m,
                                                   value: 0);
@@ -45,7 +45,7 @@ namespace ParcelDelivery.Tests.Services.Handler
             Assert.Equal("Mail", department.Name);
         }
         [Fact]
-        public void Should_Handle_Based_Only_On_Min_Weight()
+        public void ShouldHandle_BasedOnlyOnMinWeight()
         {
             var parcelToHandle = CreateFakeParcel(weight: 15,
                                                   value: 0);
@@ -58,7 +58,7 @@ namespace ParcelDelivery.Tests.Services.Handler
         }
 
         [Fact]
-        public void Should_Handle_Based_On_Weight_Range()
+        public void ShouldHandle_BasedOnWeightRange()
         {
             var parcelToHandle = CreateFakeParcel(weight: 5,
                                                   value: 0);
@@ -72,7 +72,7 @@ namespace ParcelDelivery.Tests.Services.Handler
 
 
         [Fact]
-        public void Should_Handle_First_Based_On_Value_Instead_Of_Weight()
+        public void ShouldHandle_FirstBasedOnValueInsteadOfWeight()
         {
             var parcelToHandle = CreateFakeParcel(weight: 5,
                                                   value: 2000);
@@ -84,7 +84,7 @@ namespace ParcelDelivery.Tests.Services.Handler
         }
 
         [Fact]
-        public void Should_Throw_Exception_On_More_Than_One_Department_Was_Found()
+        public void ShouldThrowException_WhenMoreThanOneDepartmentWasFound()
         {
             var parcelToHandle = CreateFakeParcel(weight: 2,
                                                   value: 0);
@@ -97,7 +97,7 @@ namespace ParcelDelivery.Tests.Services.Handler
         }
 
         [Fact]
-        public void Should_Return_Null_When_No_Department_Was_Found()
+        public void ShouldReturnNull_WhenNoDepartmentWasFound()
         {
             Parcel parcelToHandle = CreateFakeParcel(weight: 0,
                                                      value: 0);
