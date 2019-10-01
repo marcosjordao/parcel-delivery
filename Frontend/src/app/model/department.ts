@@ -5,9 +5,4 @@ export class Department {
     name: string;
     weightCriteria: Interval;
     valueCriteria: Interval;
-
-    constructor() {
-        this.weightCriteria = new Interval();
-        this.valueCriteria = new Interval();
-    }
 }
