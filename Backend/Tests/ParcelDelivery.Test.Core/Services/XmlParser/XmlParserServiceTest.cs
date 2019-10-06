@@ -9,7 +9,7 @@ using ParcelDelivery.Domain.ValueObjects;
 using ParcelDelivery.Services.XmlParser;
 using Newtonsoft.Json;
 
-namespace ParcelDelivery.Tests.Services.XmlParser
+namespace ParcelDelivery.Test.Core.Services.XmlParser
 {
     public class XmlParserTest
     {

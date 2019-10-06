@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Xml.Linq;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ParcelDelivery.Domain.Entities;
 using ParcelDelivery.Domain.Services;
-using ParcelDelivery.Domain.ValueObjects;
+using System.Collections.Generic;
+using System.Xml.Linq;
 
 namespace ParcelDelivery.API.Controllers
 {
@@ -48,13 +43,13 @@ namespace ParcelDelivery.API.Controllers
 
         // POST: api/Handler/HandleContainerXml
         [HttpPost("HandleContainerXml/", Name = "HandleContainerXml")]
-        public ActionResult<List<(Parcel parcel, Department department)>> HandleContainerXml(IFormFile file)
+        public ActionResult<List<(Parcel parcel, Department department)>> HandleContainerXml([FromForm] IFormFile file)
         {
             if (file == null || file.Length == 0)
                 return BadRequest("Invalid file");
 
             // Accepts XML file
-            if (file.ContentType != "text/xml")
+            if (!file.ContentType.Contains("xml"))
                 return BadRequest("Invalid file type");
 
             // Read the XML file
