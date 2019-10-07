@@ -6,14 +6,16 @@ using System.Text;
 
 namespace ParcelDelivery.Services.Validators
 {
-    class DepartmentValidator : AbstractValidator<Department>
+    public class DepartmentValidator : AbstractValidator<Department>
     {
         public DepartmentValidator()
         {
             RuleFor(p => p.Name).NotEmpty()
                                 .WithMessage("Name should not be empty")
-                                .Length(3, 70)
-                                .WithMessage("Invalid name");
+                                .MaximumLength(70)
+                                .WithMessage("Name length must be maximum 70 characters")
+                                .MinimumLength(3)
+                                .WithMessage("Name must have at least 3 characters");
         }
     }
 }

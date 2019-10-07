@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace ParcelDelivery.Test.Core.Services.Entities
+namespace ParcelDelivery.UnitTests.Services.Entities
 {
     public class DepartmentServiceTest
     {

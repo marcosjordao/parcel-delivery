@@ -13,9 +13,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ParcelDelivery.Infrastructu
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{E2A4DF80-4CAC-4148-AAED-2C50FDC818DA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParcelDelivery.Test.Integration", "Tests\ParcelDelivery.Test.Integration\ParcelDelivery.Test.Integration.csproj", "{F1C3ED34-E4A1-4AF6-97B3-6508304A3873}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ParcelDelivery.API.IntegrationTests", "Tests\ParcelDelivery.API.IntegrationTests\ParcelDelivery.API.IntegrationTests.csproj", "{F1C3ED34-E4A1-4AF6-97B3-6508304A3873}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParcelDelivery.Test.Core", "Tests\ParcelDelivery.Test.Core\ParcelDelivery.Test.Core.csproj", "{8D632683-E6B4-47BC-AC02-EC1A941F1F00}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ParcelDelivery.UnitTests", "Tests\ParcelDelivery.UnitTests\ParcelDelivery.UnitTests.csproj", "{8D632683-E6B4-47BC-AC02-EC1A941F1F00}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
