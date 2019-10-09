@@ -12,7 +12,7 @@ namespace ParcelDelivery.Infrastructure.Repositories
     public class DepartmentRepository : MongoRepository<Department>, IDepartmentRepository
     {
 
-        public DepartmentRepository() : base()
+        public DepartmentRepository(string connectionString, string databaseName) : base(connectionString, databaseName)
         {
             //// Setup fake departments
             //_collection = new List<Department>

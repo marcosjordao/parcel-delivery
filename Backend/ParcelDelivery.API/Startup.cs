@@ -42,7 +42,8 @@ namespace ParcelDelivery.API
             services.AddScoped<IParcelHandlerService, ParcelHandlerService>();
             services.AddScoped<IXmlParserService, XmlParserService>();
             services.AddScoped<IDepartmentService, DepartmentService>();
-            services.AddScoped<IDepartmentRepository, DepartmentRepository>();
+            services.AddTransient<IDepartmentRepository>(s => new DepartmentRepository(Configuration.GetConnectionString("DefaultConnection"),
+                                                                                       Configuration.GetConnectionString("DatabaseName")));
 
 
             // Swagger

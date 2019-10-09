@@ -14,12 +14,12 @@ namespace ParcelDelivery.Infrastructure.Repositories.Base
         private readonly IMongoDatabase _database;
         public readonly IMongoCollection<TEntity> _collection;
 
-        public MongoRepository()
+        public MongoRepository(string connectionString, string databaseName)
         {
 
             // MongoDB Atlas
-            var client = new MongoDB.Driver.MongoClient("mongodb+srv://user-delivery:DeliveryDbPa$$@onsocial-0fxjl.gcp.mongodb.net/test?retryWrites=true");
-            var databaseName = "Delivery";
+            var client = new MongoDB.Driver.MongoClient(connectionString);
+            //var databaseName = "Delivery";
 
             _database = client.GetDatabase(databaseName);
             _collection = _database.GetCollection<TEntity>(typeof(TEntity).Name);
